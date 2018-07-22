@@ -7,6 +7,8 @@
 # Base Image #
 FROM ubuntu:16.04
 
+MAINTAINER Taylor Ashworth <silvertear33@yahoo.com>
+
 #####################
 # Enviromental variables
 #####################
@@ -86,5 +88,4 @@ VOLUME /data/moloch/raw \
 
 ### start script for moloch
 CMD /data/moloch/bin/start_script.sh
-
 #### Finished! ####
