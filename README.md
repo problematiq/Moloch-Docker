@@ -24,10 +24,10 @@ docker run \
 Clean up dockerfile. \
 Improve readme. \
 create a method of deploying an All-in-one other than Ansible \.
-figure out what to do about setting up an initial deployment for the Following: \
-  - certificates, or maybe i'll just ignore this One. \
-  - `db.pl init` \
-  - create default admin account. \
+figure out what to do about setting up an initial deployment for the Following:
+  - certificates, or maybe i'll just ignore this One.
+  - `db.pl init`
+  - create default admin account.
 Change Example to include ES container?
 
 # Release Notes:
