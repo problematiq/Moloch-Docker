@@ -4,7 +4,7 @@ Docker image for moloch
 
 # Requirments
 This image requires an ElasticSearch instance, and does not come with one. \
-You can either setup your own, or wait untill I post my Ansible script which will setup both moloch, and ES.
+You can either setup your own, or wait until I post my Ansible script which will setup both moloch, and ES.
 
 # Example run command:
 ```
