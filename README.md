@@ -32,7 +32,7 @@ Moloch version 1.5
 
 # 3/26/18 - v1.1
 Moloch version 1.1 \
-Remove un-needed enviromental variables. \
+Remove un-needed environmental variables. \
 Added OS version for ubuntu. \
 Cleaned up the build file a bit.
 
