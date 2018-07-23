@@ -19,8 +19,6 @@ docker run \
   problematiq/moloch-docker
 ```
 
-
-########################################################################
 # Future version changes:
 Clean up dockerfile.
 
@@ -47,4 +45,3 @@ stopped using Nightly-builds for moloch.
 Started version control. \
 Removed nano and less from installed packages. \
 Created notes within the dockerfile to explain each step of the build.
-########################################################################
