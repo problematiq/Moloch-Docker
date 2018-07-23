@@ -42,15 +42,15 @@ docker run \
   --net=host \
   -v /data/moloch/raw:/data/moloch/raw \
   -v /data/moloch/logs:/data/moloch/logs \
-  -v /data/moloch/etc:/data/moloch/etc \
+  -v /data/moloch/etc/config.ini.sample:/data/moloch/etc/config.ini.sample \
+  -v /data/moloch/etc/config.ini:/data/moloch/etc/config.ini \
   problematiq/moloch-docker
 ```
 
-You will likely need to run `docker stop moloch` after using the docker run command above, \
-then editing `/data/moloch/etc/config.ini` and filling out the desired settings. \
-
 If this is the first time you've installed moloch, there are two commands to need to run before it will function.
-
+  - `docker exec -it moloch cp /data/moloch/etc/config.ini.sample /data/moloch/etc/config.ini`
+  - `docker exec -it moloch /data/moloch/db/db.pl http://localhost:9200 init`
+  - `docker exec -it moloch /data/moloch/bin/moloch_add_user.sh admin admin admin --admin`
 
 # Future version changes:
 Clean up dockerfile. \

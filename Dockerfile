@@ -48,6 +48,8 @@ RUN apt-get -y upgrade \
         && dpkg -i moloch_1.5.1-1_amd64.deb \
         && sh /data/moloch/bin/moloch_update_geo.sh
 
+RUN cp /data/moloch/etc/config.ini.sample /data/moloch/etc/config.ini
+
 ### Area reserved for PKI's ###
 # COPY /certs/CA_or_chain.crt /usr/local/share/ca-certificates/
 # RUN update-ca-certificates --fresh
@@ -67,9 +69,7 @@ RUN chmod 755 /data/moloch/bin/start_script.sh
 
 # Assigns volumes to later mount to host #
 VOLUME /data/moloch/raw \
-        /data/moloch/logs \
-# Mount for config files.
-        /data/moloch/etc
+        /data/moloch/logs
 #####################
 # Start script(s)
 #####################
