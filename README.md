@@ -2,7 +2,7 @@
 Docker image for moloch
 
 
-# Requirments
+# Requirements
 This image requires an ElasticSearch instance, and does not come with one. \
 You can either setup your own, or wait until I post my Ansible script which will setup both moloch, and ES.
 
@@ -12,6 +12,7 @@ docker run \
   --name=moloch \
   -dit \
   --restart=on-failure \
+  --net=host \
   -v /data/moloch/raw:/data/moloch/raw \
   -v /data/moloch/logs:/data/moloch/logs \
   -v /data/moloch/etc/config.ini:/data/moloch/etc/config.ini \
@@ -20,7 +21,14 @@ docker run \
 ```
 
 # Future version changes:
-Clean up dockerfile.
+Clean up dockerfile. \
+Improve readme. \
+create a method of deploying an All-in-one other than Ansible \.
+figure out what to do about setting up an initial deployment for the Following: \
+  - certificates, or maybe i'll just ignore this One. \
+  - `db.pl init` \
+  - create default admin account. \
+Change Example to include ES container?
 
 # Release Notes:
 # 7/23/18 - v1.5.1
