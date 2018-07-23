@@ -62,18 +62,6 @@ COPY /startscript/start_script.sh /data/moloch/bin/
 RUN chmod 755 /data/moloch/bin/start_script.sh
 
 #####################
-# Ports
-#####################
-
-##
-# Set container to listem on port 8005. This is required even if you are not using this for the web gui.
-# Moloch uses port 8005 for both web gui and API, e.g pcap download from another host.
-# If you wish to use a port other than 8005, be aware that moloch drops privledges and cannot go below port 1024 as of 6/12/18. (This was discussed on Slack, in the future, moloch will drop privs at a later point, and thiis restriction will be removed.)
-##
-
-EXPOSE 8005
-
-#####################
 # Mounted volumes
 #####################
 
