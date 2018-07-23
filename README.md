@@ -1,7 +1,24 @@
 # Moloch-Docker
 Docker image for moloch
 
-########################################################################
+
+# Requirments
+This image requires an ElasticSearch instance, and does not come with one. \
+You can either setup your own, or wait untill I post my Ansible script which will setup both moloch, and ES.
+
+# Example run command:
+```
+docker run \
+  --name=moloch \
+  -dit \
+  --restart=on-failure \
+  -v /data/moloch/raw:/data/moloch/raw \
+  -v /data/moloch/logs:/data/moloch/logs \
+  -v /data/moloch/etc/config.ini:/data/moloch/etc/config.ini \
+  -p 8005:8005 \
+  problematiq/moloch-docker
+```
+
 # Future version changes:
 Clean up dockerfile.
 
@@ -32,4 +49,3 @@ stopped using Nightly-builds for moloch.
 Started version control. \
 Removed nano and less from installed packages. \
 Created notes within the dockerfile to explain each step of the build.
-########################################################################
