@@ -7,7 +7,7 @@ This image requires an ElasticSearch instance, and does not come with one. \
 You can either setup your own, or wait until I post my Ansible script which will setup both moloch, and ES.
 
 # Prerequisites
-The following is an example on how to create an ES instance, currently the last tested ES version was 6.3.1 \
+The following is an example on how to create an ES instance, currently the last tested ES version was 6.3.1
 
 You can change the amount of memory the container reserves, but be sure and give the container more ram than ES, \
 and never give ES more than 30G of ram.

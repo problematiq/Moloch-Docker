@@ -71,8 +71,7 @@ RUN chmod 755 /data/moloch/bin/start_script.sh
 
 # Assigns volumes to later mount to host #
 VOLUME /data/moloch/raw \
-       /data/moloch/logs \
-       /data/moloch/etc/config.ini
+       /data/moloch/logs
 
 #####################
 # Start script(s)
