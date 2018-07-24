@@ -64,12 +64,14 @@ COPY /startscript/start_script.sh /data/moloch/bin/
 RUN chmod 755 /data/moloch/bin/start_script.sh
 
 #####################
-# Mounted volumes
+# Volumes
 #####################
 
 # Assigns volumes to later mount to host #
 VOLUME /data/moloch/raw \
-        /data/moloch/logs
+       /data/moloch/logs \
+       /data/moloch/etc
+
 #####################
 # Start script(s)
 #####################
