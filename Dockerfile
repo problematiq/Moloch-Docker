@@ -15,10 +15,12 @@ MAINTAINER Taylor Ashworth <silvertear33@yahoo.com>
 ENV DEBIAN_FRONTEND noninteractive
 # Auto accepts Java EULA #
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
-
+# setting path for NPM and NODE that comes with moloch #
+ENV PATH /data/moloch/bin:$PATH
 #####################
 # Setup
 #####################
+WORKDIR /
 
 # Install Moloch dependencies #
 RUN apt-get update \
@@ -70,7 +72,7 @@ RUN chmod 755 /data/moloch/bin/start_script.sh
 # Assigns volumes to later mount to host #
 VOLUME /data/moloch/raw \
        /data/moloch/logs \
-       /data/moloch/etc
+       /data/moloch/etc/config.ini
 
 #####################
 # Start script(s)

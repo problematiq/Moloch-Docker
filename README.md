@@ -34,6 +34,11 @@ mkdir -p /opt/elasticsearch/node/data \
 ```
 
 # Example run command:
+
+If this is your first-time running this container, and do not have a `config.ini` already in `/data/moloch/etc/` then run the Following:
+  - ***Before creating the container*** `mkdir -p /data/moloch/etc && touch /data/moloch/etc/config.ini`
+  - ***After creating the container*** `docker exec -it moloch cp /data/moloch/etc/config.ini.sample /data/moloch/etc/config.ini && sed -i 's/MOLOCH_INSTALL_DIR/\/data\/moloch/g' /data/moloch/etc/config.ini`
+
 ```
 docker run \
   --name=moloch \
@@ -42,15 +47,20 @@ docker run \
   --net=host \
   -v /data/moloch/raw:/data/moloch/raw \
   -v /data/moloch/logs:/data/moloch/logs \
-  -v /data/moloch/etc/config.ini.sample:/data/moloch/etc/config.ini.sample \
   -v /data/moloch/etc/config.ini:/data/moloch/etc/config.ini \
   problematiq/moloch-docker
 ```
 
-If this is the first time you've installed moloch, there are two commands to need to run before it will function.
-  - `docker exec -it moloch cp /data/moloch/etc/config.ini.sample /data/moloch/etc/config.ini`
-  - `docker exec -it moloch /data/moloch/db/db.pl http://localhost:9200 init`
+You will need to edit `/data/moloch/etc/config.ini` and fill out the config file. The following are required for moloch to function properly:
+  - `elasticsearch=` The url to your ES instance. e.g `elasticsearch=http://localhost:9200`
+  - `interface=` Semi-colon separated value of the interfaces you will be monitoring traffic from. e.g `interface=eno1;emp3;ens01n5`
+The following changes are not required, but are highly suggested.
+  - `passwordSecret =` CHANGE ME!!!
+
+If this is the first time you've installed moloch, there are two commands you need to run before it will function.
+  - `docker exec -it moloch /data/moloch/db/db.pl http://localhost:9200 init` ***note*** localhost will need to be changed to whatever hostname ES resides on.
   - `docker exec -it moloch /data/moloch/bin/moloch_add_user.sh admin admin admin --admin`
+This will create a username:admin password:admin you can create a new user and delete this one via the web gui.
 
 # Future version changes:
 Clean up dockerfile. \
@@ -62,34 +72,34 @@ figure out what to do about setting up an initial deployment for the Following:
   - create default admin account.
 Change Example to include ES container?
 
-# Release Notes:
-# 7/23/18 - v1.5.1_2
+## Release Notes:
++ **7/23/18 - v1.5.1_2**
 Remembered im setting `--net=host` so there's no reason to expose a port.
 Added a quick how-to for setting up ES locally
 
-# 7/23/18 - v1.5.1
++ **7/23/18 - v1.5.1**
 Moloch version 1.5.1 \
 Following Moloch's SVC
 
-# 7/22/18 - v1.5
++ **7/22/18 - v1.5**
 Moloch version 1.5
 
-# 3/26/18 - v1.1
++ **3/26/18 - v1.1**
 Moloch version 1.1 \
 Remove un-needed environmental variables. \
 Added OS version for ubuntu. \
 Cleaned up the build file a bit.
 
-# 3/23/18 - v1.0.1
++ **3/23/18 - v1.0.1**
 Changed to version 1.0 \
 Removed systemd YAY~! \
 Moved shell steps from my ansible script to dockerfile.
 
-# 3/20/18 - v1.0
++ **3/20/18 - v1.0**
 Changed to version Moloch 1.0 rc1-1. \
 stopped using Nightly-builds for moloch.
 
-# 3/6/18 - v0.50
++ **3/6/18 - v0.50**
 Started version control. \
 Removed nano and less from installed packages. \
 Created notes within the dockerfile to explain each step of the build.
