@@ -55,6 +55,7 @@ docker run \
 You will need to edit `/data/moloch/etc/config.ini` and fill out the config file. The following are required for moloch to function:
   - `elasticsearch=` The url to your ES instance. e.g `elasticsearch=http://localhost:9200`
   - `interface=` Semi-colon separated value of the interfaces you will be monitoring traffic from. e.g `interface=eno1;emp3;ens01n5`
+  
 The following changes are not required, but are highly suggested:
   - `passwordSecret =` CHANGE ME!!!
 
