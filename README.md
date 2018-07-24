@@ -73,7 +73,7 @@ figure out what to do about setting up an initial deployment for the Following:
 
 **Critical** \
 move all the initial setup into a script. \
-insure interface settings, log rotate, and limits get set on host. \
+insure interface settings, log rotate, and limits get set on host.
 
 ## Release Notes:
 + **7/24/18 - v1.5.1_3**
