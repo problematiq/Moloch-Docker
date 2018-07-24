@@ -36,10 +36,8 @@ mkdir -p /opt/elasticsearch/node/data \
 # Example run command:
 
 If this is your first-time running this container, and do not have a `config.ini` already in `/data/moloch/etc/` then run the Following:
-***Before creating the container*** \
-  - `mkdir -p /data/moloch/etc && touch /data/moloch/etc/config.ini` \
-***After creating the container*** \
-  - `docker exec -it moloch cp /data/moloch/etc/config.ini.sample /data/moloch/etc/config.ini`
+  - ***Before creating the container*** `mkdir -p /data/moloch/etc && touch /data/moloch/etc/config.ini`
+  - ***After creating the container*** `docker exec -it moloch cp /data/moloch/etc/config.ini.sample /data/moloch/etc/config.ini`
 
 ***Running the container***
 ```
