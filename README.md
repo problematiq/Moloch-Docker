@@ -70,6 +70,7 @@ Improve readme. \
 create a method of deploying an All-in-one other than Ansible. \
 figure out what to do about setting up an initial deployment for the Following:
   - certificates, or maybe i'll just ignore this One.
+  
 **Critical**
 move all the initial setup into a script. \
 insure interface settings, log rotate, and limits get set on host. \
