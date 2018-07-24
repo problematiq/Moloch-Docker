@@ -50,7 +50,7 @@ RUN apt-get -y upgrade \
         && dpkg -i moloch_1.5.1-1_amd64.deb \
         && sh /data/moloch/bin/moloch_update_geo.sh
 
-RUN cp /data/moloch/etc/config.ini.sample /data/moloch/etc/config.ini
+RUN sed -i 's/MOLOCH_INSTALL_DIR/\/data\/moloch/g' /data/moloch/etc/config.ini.sample
 
 ### Area reserved for PKI's ###
 # COPY /certs/CA_or_chain.crt /usr/local/share/ca-certificates/

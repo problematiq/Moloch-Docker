@@ -37,7 +37,7 @@ mkdir -p /opt/elasticsearch/node/data \
 
 If this is your first-time running this container, and do not have a `config.ini` already in `/data/moloch/etc/` then run the Following:
   - ***Before creating the container*** `mkdir -p /data/moloch/etc && touch /data/moloch/etc/config.ini`
-  - ***After creating the container*** `docker exec -it moloch cp /data/moloch/etc/config.ini.sample /data/moloch/etc/config.ini && sed -i 's/MOLOCH_INSTALL_DIR/\/data\/moloch/g' /data/moloch/etc/config.ini`
+  - ***After creating the container*** `docker exec -it moloch cp /data/moloch/etc/config.ini.sample /data/moloch/etc/config.ini`
 
 ```
 docker run \
@@ -51,30 +51,34 @@ docker run \
   problematiq/moloch-docker
 ```
 
-You will need to edit `/data/moloch/etc/config.ini` and fill out the config file. The following are required for moloch to function properly:
+You will need to edit `/data/moloch/etc/config.ini` and fill out the config file. The following are required for moloch to function:
   - `elasticsearch=` The url to your ES instance. e.g `elasticsearch=http://localhost:9200`
   - `interface=` Semi-colon separated value of the interfaces you will be monitoring traffic from. e.g `interface=eno1;emp3;ens01n5`
-The following changes are not required, but are highly suggested.
+The following changes are not required, but are highly suggested:
   - `passwordSecret =` CHANGE ME!!!
 
-If this is the first time you've installed moloch, there are two commands you need to run before it will function.
+If this is the first time you've installed moloch, there are two commands you need to run after the container is created for it to function.
   - `docker exec -it moloch /data/moloch/db/db.pl http://localhost:9200 init` ***note*** localhost will need to be changed to whatever hostname ES resides on.
   - `docker exec -it moloch /data/moloch/bin/moloch_add_user.sh admin admin admin --admin`
-This will create a username:admin password:admin you can create a new user and delete this one via the web gui.
+This will create a username:admin password:admin you can create a new user and delete this one via the web gui. \
 
 # Future version changes:
 Clean up dockerfile. \
 Improve readme. \
-create a method of deploying an All-in-one other than Ansible \.
+create a method of deploying an All-in-one other than Ansible. \
 figure out what to do about setting up an initial deployment for the Following:
   - certificates, or maybe i'll just ignore this One.
-  - `db.pl init`
-  - create default admin account.
-Change Example to include ES container?
+
+Change Example to include ES container? \
 
 ## Release Notes:
++ **7/24/18 - v1.5.1_3**
+`db.pl init` instructions added. \
+instructions to create default admin account added. \
+Overall added tons to the readme.
+
 + **7/23/18 - v1.5.1_2**
-Remembered im setting `--net=host` so there's no reason to expose a port.
+Remembered im setting `--net=host` so there's no reason to expose a port. \
 Added a quick how-to for setting up ES locally
 
 + **7/23/18 - v1.5.1**
