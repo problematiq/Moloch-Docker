@@ -4,7 +4,7 @@ Docker image for moloch
 
 # Requirements
 This image requires an ElasticSearch instance, and does not come with one. \
-You can either setup your own, or wait until I post my Ansible script which will setup both moloch, and ES.
+You can either setup your own, or wait until I post an Ansible script which will setup both moloch, and ES.
 
 # Prerequisites
 The following is an example on how to create an ES instance, currently the last tested ES version was 6.3.1
@@ -36,9 +36,12 @@ mkdir -p /opt/elasticsearch/node/data \
 # Example run command:
 
 If this is your first-time running this container, and do not have a `config.ini` already in `/data/moloch/etc/` then run the Following:
-  - ***Before creating the container*** `mkdir -p /data/moloch/etc && touch /data/moloch/etc/config.ini`
-  - ***After creating the container*** `docker exec -it moloch cp /data/moloch/etc/config.ini.sample /data/moloch/etc/config.ini`
+***Before creating the container***
+  - `mkdir -p /data/moloch/etc && touch /data/moloch/etc/config.ini`
+***After creating the container***
+  - `docker exec -it moloch cp /data/moloch/etc/config.ini.sample /data/moloch/etc/config.ini`
 
+***Running the container***
 ```
 docker run \
   --name=moloch \
@@ -68,14 +71,16 @@ Improve readme. \
 create a method of deploying an All-in-one other than Ansible. \
 figure out what to do about setting up an initial deployment for the Following:
   - certificates, or maybe i'll just ignore this One.
-
-Change Example to include ES container? \
++ **Critical**
+move all the initial setup into a script. \
+insure interface settings, log rotate, and limits get set on host. \
 
 ## Release Notes:
 + **7/24/18 - v1.5.1_3**
 `db.pl init` instructions added. \
 instructions to create default admin account added. \
-Overall added tons to the readme.
+Overall added tons to the readme. \
+Added ES Example
 
 + **7/23/18 - v1.5.1_2**
 Remembered im setting `--net=host` so there's no reason to expose a port. \
