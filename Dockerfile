@@ -1,6 +1,6 @@
 ########################################################################
 # Moloch capture/viewer container
-# v2.2
+# v2.5
 # By Problematiq
 ########################################################################
 
@@ -45,10 +45,11 @@ RUN echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true 
 # Install Moloch #
 RUN apt-get -y upgrade \
         && apt-get -y dist-upgrade \
-        && wget https://files.molo.ch/builds/ubuntu-16.04/moloch_1.5.1-1_amd64.deb \
+        && wget https://files.molo.ch/moloch-master_ubuntu16_amd64.deb \
         && apt-get -f -y install \
-        && dpkg -i moloch_1.5.1-1_amd64.deb \
+        && dpkg -i moloch-master_ubuntu16_amd64.deb \
         && sh /data/moloch/bin/moloch_update_geo.sh
+RUN rm moloch-master_ubuntu16_amd64.deb
 
 RUN sed -i 's/MOLOCH_INSTALL_DIR/\/data\/moloch/g' /data/moloch/etc/config.ini.sample
 
@@ -71,7 +72,8 @@ RUN chmod 755 /data/moloch/bin/start_script.sh
 
 # Assigns volumes to later mount to host #
 VOLUME /data/moloch/raw \
-       /data/moloch/logs
+       /data/moloch/logs \
+       /data/moloch/etc/config.ini
 
 #####################
 # Start script(s)
