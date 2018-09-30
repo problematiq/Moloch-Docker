@@ -43,7 +43,8 @@ RUN echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true 
         && rm -rf /var/cache/oracle-jdk8-installer
 
 # Install Moloch #
-RUN apt-get -y upgrade && apt-get -y dist-upgrade \
+RUN apt-get -y upgrade \
+        && apt-get -y dist-upgrade \
         && wget https://files.molo.ch/moloch-master_ubuntu16_amd64.deb \
         && apt-get -f -y install \
         && dpkg -i moloch-master_ubuntu16_amd64.deb \
@@ -76,7 +77,7 @@ EXPOSE 8005
 #####################
 # Assigns volumes to later mount to host #
 VOLUME /data/moloch/raw \
-        /data/moloch/logs
+       /data/moloch/logs
 
 #####################
 # Start script(s)

@@ -76,6 +76,11 @@ move all the initial setup into a script. \
 insure interface settings, log rotate, and limits get set on host.
 
 ## Release Notes:
++ **9/20/2018 - v2.5**
+Moved version from stable to latest commit. \
+Added a volume for config file. \
+moved to Dockerfile versioning.
+
 + **7/24/18 - v1.5.1_3**
 `db.pl init` instructions added. \
 instructions to create default admin account added. \
